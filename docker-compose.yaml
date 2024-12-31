@@ -1,0 +1,18 @@
+services:
+
+  filegator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: filegator
+    restart: unless-stopped
+    ports:
+      - "8280:8080"
+    volumes:
+      - ./configuration.php:/var/www/filegator/configuration.php:rw
+      - repository:/var/www/filegator/repository
+      - private:/var/www/filegator/private
+
+volumes:
+  repository:
+  private:
